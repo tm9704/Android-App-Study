@@ -17,7 +17,10 @@ class MainActivity : AppCompatActivity() {
         //period 는 주기 1000이면 1/1000초 마다 함수가 돌아
         timer(period = 1000){
             sec++
-            tv.text = sec.toString()
+            // 실시간으로 변화
+            runOnUiThread {
+                tv.text = sec.toString()
+            }
         }
 
 //        //변수 생성 (TextView, Button은 객체)
