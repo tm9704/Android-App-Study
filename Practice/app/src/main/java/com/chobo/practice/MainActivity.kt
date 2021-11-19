@@ -21,23 +21,28 @@ class MainActivity : AppCompatActivity() {
         //변수 생성 (TextView, Button은 객체)
         val tv: TextView = findViewById(R.id.tv_hello)
         val btn: Button = findViewById(R.id.btn_kor)
+        btn.setOnClickListener{
+            val random_box = Random()
+            //0~10 정수형 반환
+            val num = random_box.nextInt(1001)
+            tv.text = ((num.toFloat())/100).toString()
+        }
 
         //버튼에 기능 추가
-        btn.setOnClickListener {
-            isRunning = !isRunning
-            if(isRunning == true){
-                //period 는 주기 1000이면 1000ms 마다 함수가 돎
-                timerTask = kotlin.concurrent.timer(period = 10){
-                    sec++
-                    // 실시간으로 변화
-                    runOnUiThread {
-                        tv.text = (sec.toFloat()/100).toString()
-                    }
-                }
-            }else{
-                timerTask?.cancel()
-            }
-
-        }
+//        btn.setOnClickListener {
+//            isRunning = !isRunning
+//            if(isRunning == true){
+//                //period 는 주기 1000이면 1000ms 마다 함수가 돎
+//                timerTask = kotlin.concurrent.timer(period = 10){
+//                    sec++
+//                    // 실시간으로 변화
+//                    runOnUiThread {
+//                        tv.text = (sec.toFloat()/100).toString()
+//                    }
+//                }
+//            }else{
+//                timerTask?.cancel()
+//            }
+//        }
     }
 }
