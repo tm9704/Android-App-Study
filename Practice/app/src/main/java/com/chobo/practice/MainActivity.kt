@@ -26,12 +26,12 @@ class MainActivity : AppCompatActivity() {
         btn.setOnClickListener {
             isRunning = !isRunning
             if(isRunning == true){
-                //period 는 주기 1000이면 1/1000초 마다 함수가 돎
-                timerTask = kotlin.concurrent.timer(period = 1000){
+                //period 는 주기 1000이면 1000ms 마다 함수가 돎
+                timerTask = kotlin.concurrent.timer(period = 10){
                     sec++
                     // 실시간으로 변화
                     runOnUiThread {
-                        tv.text = sec.toString()
+                        tv.text = (sec.toFloat()/100).toString()
                     }
                 }
             }else{
