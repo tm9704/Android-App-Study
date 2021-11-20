@@ -8,6 +8,12 @@ import java.lang.Math.abs
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
+    // 제한 인원
+    var p_num = 3
+    // 현재 사람(참가자 번호), p_num과 비교해서 게임 중지 상황 만들기
+    var k = 1
+    val point_list = mutableListOf<Float>()
+
     fun main(){
         //xml파일의 layout을 불러옴
         setContentView(R.layout.activity_main)
@@ -25,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         val tv: TextView = findViewById(R.id.tv_random)
         val tv_t: TextView = findViewById(R.id.tv_timer)
         val tv_p: TextView = findViewById(R.id.tv_point)
+        val tv_people: TextView = findViewById(R.id.tv_people)
         val btn: Button = findViewById(R.id.btn_main)
         val random_box = Random()
         //0~10 정수형 반환
@@ -33,6 +40,8 @@ class MainActivity : AppCompatActivity() {
         //tv.text라는 위젯에 랜덤한 숫자를 표기
         tv.text = ((num.toFloat())/100).toString()
         btn.text = "시작"
+        //$k를 하면 변수가 적용
+        tv_people.text = "참가자 $k"
 
         //버튼에 기능 추가
         btn.setOnClickListener {
@@ -51,12 +60,18 @@ class MainActivity : AppCompatActivity() {
             }else if(stage == 3){
                 timerTask?.cancel()
                 val point = abs(sec-num).toFloat()/100
+                point_list.add(point)
                 tv_p.text = point.toString()
                 btn.text = "다음"
                 stage = 0
             }else if(stage == 1){
-                //다시 함수를 부름, 초기화
-                main()
+                if(k<p_num) {
+                    k++
+                    //다시 함수를 부름, 초기화(재귀함수)
+                    main()
+                }else{
+                    println(point_list)
+                }
             }
         }
     }

@@ -81,4 +81,15 @@
         app:layout_constraintTop_toBottomOf="@+id/timer"
         app:layout_constraintVertical_bias="0.674" />
 
+    <TextView
+        android:id="@+id/tv_people"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="참가자 1"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/timer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
