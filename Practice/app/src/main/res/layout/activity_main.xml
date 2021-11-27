@@ -38,14 +38,14 @@
         android:layout_height="wrap_content"
         android:text="목표"
         android:textSize="48sp"
-        app:layout_constraintBottom_toTopOf="@+id/tv_random"
-        app:layout_constraintEnd_toEndOf="@+id/tv_random"
-        app:layout_constraintStart_toStartOf="@+id/tv_random"
+        app:layout_constraintBottom_toTopOf="@+id/tv_pnum"
+        app:layout_constraintEnd_toEndOf="@+id/tv_pnum"
+        app:layout_constraintStart_toStartOf="@+id/tv_pnum"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.707" />
 
     <TextView
-        android:id="@+id/tv_random"
+        android:id="@+id/tv_pnum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0.00"
@@ -58,7 +58,7 @@
         app:layout_constraintVertical_bias="0.376" />
 
     <Button
-        android:id="@+id/btn_main"
+        android:id="@+id/btn_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="시작/정지"
@@ -75,7 +75,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="48sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_main"
+        app:layout_constraintBottom_toTopOf="@+id/btn_start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

@@ -14,6 +14,33 @@ class MainActivity : AppCompatActivity() {
     var k = 1
     val point_list = mutableListOf<Float>()
 
+    fun start(){
+        setContentView(R.layout.activity_start)
+        val tv_pnum: TextView = findViewById(R.id.tv_pnum)
+        val btn_minus: TextView = findViewById(R.id.btn_minus)
+        val btn_plus: TextView = findViewById(R.id.btn_plus)
+        val btn_start: TextView = findViewById(R.id.btn_start)
+
+        tv_pnum.text = p_num.toString()
+
+        btn_minus.setOnClickListener{
+            p_num--
+            if(p_num == 0){
+                p_num = 1
+            }
+            tv_pnum.text = p_num.toString()
+        }
+
+        btn_plus.setOnClickListener{
+            p_num++
+            tv_pnum.text = p_num.toString()
+        }
+
+        btn_start.setOnClickListener{
+            main()
+        }
+    }
+
     fun main(){
         //xml파일의 layout을 불러옴
         setContentView(R.layout.activity_main)
@@ -28,11 +55,11 @@ class MainActivity : AppCompatActivity() {
         var stage = 1
         var sec : Int = 0
         //변수 생성 (TextView, Button은 객체), 위젯 선택
-        val tv: TextView = findViewById(R.id.tv_random)
+        val tv: TextView = findViewById(R.id.tv_pnum)
         val tv_t: TextView = findViewById(R.id.tv_timer)
         val tv_p: TextView = findViewById(R.id.tv_point)
         val tv_people: TextView = findViewById(R.id.tv_people)
-        val btn: Button = findViewById(R.id.btn_main)
+        val btn: Button = findViewById(R.id.btn_start)
         val random_box = Random()
         //0~10 정수형 반환
         val num = random_box.nextInt(1001)
@@ -70,14 +97,25 @@ class MainActivity : AppCompatActivity() {
                     //다시 함수를 부름, 초기화(재귀함수)
                     main()
                 }else{
-                    println(point_list)
+                    end()
                 }
             }
         }
     }
 
+    fun end(){
+        setContentView(R.layout.activity_end)
+
+        val tv_last: TextView = findViewById(R.id.tv_last)
+        val tv_lpoint: TextView = findViewById(R.id.tv_lpoint)
+        val btn_init: TextView = findViewById(R.id.btn_init)
+
+        tv_lpoint.text = (point_list.maxOrNull()).toString()
+        tv_last.text = (point_list.indexOf(point_list.maxOrNull())).toString()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        main()
+        start()
     }
 }
