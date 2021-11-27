@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
     // 현재 사람(참가자 번호), p_num과 비교해서 게임 중지 상황 만들기
     var k = 1
     val point_list = mutableListOf<Float>()
+    var isBlind = false
 
     fun start(){
         setContentView(R.layout.activity_start)
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         val btn_minus: TextView = findViewById(R.id.btn_minus)
         val btn_plus: TextView = findViewById(R.id.btn_plus)
         val btn_start: TextView = findViewById(R.id.btn_start)
+        val btn_blind: TextView = findViewById(R.id.btn_blind)
 
         tv_pnum.text = p_num.toString()
 
@@ -36,7 +38,16 @@ class MainActivity : AppCompatActivity() {
             tv_pnum.text = p_num.toString()
         }
 
-        btn_start.setOnClickListener{
+        btn_blind.setOnClickListener{
+            isBlind = !isBlind
+            if(isBlind == true){
+                btn_blind.text = "Blind 모드 on"
+            }else {
+                btn_blind.text = "Blind 모드 off"
+            }
+        }
+
+        btn_start.setOnClickListener {
             main()
         }
     }
@@ -80,11 +91,16 @@ class MainActivity : AppCompatActivity() {
                     sec++
                     // 실시간으로 변화
                     runOnUiThread {
-                        tv_t.text = (sec.toFloat()/100).toString()
+                        if(isBlind == false) {
+                            tv_t.text = (sec.toFloat() / 100).toString()
+                        }else if(isBlind == true && stage == 2){
+                            tv_t.text = "???"
+                        }
                     }
                 }
                 btn.text = "정지"
             }else if(stage == 3){
+                tv_t.text = (sec.toFloat() / 100).toString()
                 timerTask?.cancel()
                 val point = abs(sec-num).toFloat()/100
                 point_list.add(point)
