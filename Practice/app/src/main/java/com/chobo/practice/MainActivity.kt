@@ -111,7 +111,14 @@ class MainActivity : AppCompatActivity() {
         val btn_init: TextView = findViewById(R.id.btn_init)
 
         tv_lpoint.text = (point_list.maxOrNull()).toString()
-        tv_last.text = (point_list.indexOf(point_list.maxOrNull())).toString()
+        var index_last = point_list.indexOf(point_list.maxOrNull())
+        tv_last.text = "참가자" + index_last.toString()
+
+        btn_init.setOnClickListener{
+            point_list.clear()
+            k = 1
+            start()
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
