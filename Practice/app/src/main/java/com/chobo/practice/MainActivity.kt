@@ -1,9 +1,11 @@
 package com.chobo.practice
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import java.lang.Math.abs
 import java.util.*
 
@@ -18,10 +20,10 @@ class MainActivity : AppCompatActivity() {
     fun start(){
         setContentView(R.layout.activity_start)
         val tv_pnum: TextView = findViewById(R.id.tv_pnum)
-        val btn_minus: TextView = findViewById(R.id.btn_minus)
-        val btn_plus: TextView = findViewById(R.id.btn_plus)
-        val btn_start: TextView = findViewById(R.id.btn_start)
-        val btn_blind: TextView = findViewById(R.id.btn_blind)
+        val btn_minus: Button = findViewById(R.id.btn_minus)
+        val btn_plus: Button = findViewById(R.id.btn_plus)
+        val btn_start: Button = findViewById(R.id.btn_start)
+        val btn_blind: Button = findViewById(R.id.btn_blind)
 
         tv_pnum.text = p_num.toString()
 
@@ -75,6 +77,16 @@ class MainActivity : AppCompatActivity() {
         val random_box = Random()
         //0~10 정수형 반환
         val num = random_box.nextInt(1001)
+        val bg_main: ConstraintLayout = findViewById(R.id.bg_main)
+        val color_list = mutableListOf<String>("#FF0033", "#FF9955", "#FFEE00", "#90EE90", "#ADD8E6", "#CC99CC", "#EE82EE")
+        var color_index = (k%7)-1
+
+        if(color_index == -1){
+            color_index = 6
+        }
+
+        var color_sel = color_list.get(color_index)
+        bg_main.setBackgroundColor(Color.parseColor(color_sel))
 
         //tv.text라는 위젯에 랜덤한 숫자를 표기
         tv.text = ((num.toFloat())/100).toString()
@@ -132,11 +144,11 @@ class MainActivity : AppCompatActivity() {
 
         val tv_last: TextView = findViewById(R.id.tv_last)
         val tv_lpoint: TextView = findViewById(R.id.tv_lpoint)
-        val btn_init: TextView = findViewById(R.id.btn_init)
+        val btn_init: Button = findViewById(R.id.btn_init)
 
         tv_lpoint.text = (point_list.maxOrNull()).toString()
-        var index_last = point_list.indexOf(point_list.maxOrNull())
-        tv_last.text = "참가자" + index_last.toString()
+        var index_last = point_list.indexOf(point_list.maxOrNull()) + 1
+        tv_last.text = "참가자 " + index_last.toString()
 
         btn_init.setOnClickListener{
             point_list.clear()
