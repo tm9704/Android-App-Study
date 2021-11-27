@@ -21,6 +21,7 @@
 
     <Button
         android:id="@+id/btn_start"
+        style="@style/customButtonFontStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="80dp"
@@ -35,6 +36,7 @@
 
     <Button
         android:id="@+id/btn_blind"
+        style="@style/customButtonFontStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Blind 모드 OFF"
