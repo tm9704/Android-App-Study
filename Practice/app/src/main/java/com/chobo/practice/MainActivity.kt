@@ -71,6 +71,7 @@ class MainActivity : AppCompatActivity() {
         val tv_p: TextView = findViewById(R.id.tv_point)
         val tv_people: TextView = findViewById(R.id.tv_people)
         val btn: Button = findViewById(R.id.btn_start)
+        val btn_escape: Button = findViewById(R.id.btn_escape)
         val random_box = Random()
         //0~10 정수형 반환
         val num = random_box.nextInt(1001)
@@ -80,6 +81,13 @@ class MainActivity : AppCompatActivity() {
         btn.text = "시작"
         //$k를 하면 변수가 적용
         tv_people.text = "참가자 $k"
+
+        btn_escape.setOnClickListener{
+            point_list.clear()
+            k = 1
+            p_num = 2
+            start()
+        }
 
         //버튼에 기능 추가
         btn.setOnClickListener {
@@ -133,6 +141,7 @@ class MainActivity : AppCompatActivity() {
         btn_init.setOnClickListener{
             point_list.clear()
             k = 1
+            p_num = 2
             start()
         }
     }
