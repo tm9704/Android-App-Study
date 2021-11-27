@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#BEEBF1"
     tools:context=".MainActivity">
 
     <TextView
@@ -63,6 +64,7 @@
         android:layout_height="wrap_content"
         android:text="시작/정지"
         android:textSize="48sp"
+        app:backgroundTint="#03A9F4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -76,6 +78,7 @@
         android:layout_height="wrap_content"
         android:text="처음으로"
         android:textSize="24sp"
+        app:backgroundTint="#34491C"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
